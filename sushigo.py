@@ -1,5 +1,9 @@
 from Cards import *
 import random
+import os
+
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
 
 class SushiGo:
     class Player:
@@ -149,12 +153,15 @@ class SushiGo:
         for c in range(0,self.start_hand_size):
             print("PASS {0}".format(c))
             for p in self.players:
+                if len(p.hand) == 1:
+                    p.mov_hand_plate(0)
+                    continue
+
+                #For "Security"
+                cls()
+                input("Press enter when you are ready to take your turn")
                 print("Hand: {0}\nPlate: {1}".format(p.get_hand_str(), p.get_plate_str()))
                 while(True):
-                    if len(p.hand) == 1:
-                        p.mov_hand_plate(0)
-                        break
-
                     h = input("Please enter the index of the card you want to play."
                           " Must be between 0 and {0}. If you have and want to use"
                           " chopsticks from your plate enter c[0-9][0-9] where"
@@ -200,6 +207,7 @@ class SushiGo:
         cycle = True
         for r in range(0,3):
             self.begin_turn()
+            input("Press enter when you are ready to begin the round")
             self.play_round(cycle)
             cycle = not cycle
             scores = self.score_players()
