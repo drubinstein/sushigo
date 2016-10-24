@@ -113,7 +113,7 @@ class SushiGo:
         return max_makis
 
     def score_players(self):
-        scores = [0]*self.n_players
+        scores = [0 for _ in range(0,self.n_players)]
         max_pudding = self.get_max_pudding()
         max_makis = self.get_top_makis()
 
