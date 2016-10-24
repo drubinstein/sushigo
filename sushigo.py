@@ -131,6 +131,8 @@ class SushiGo:
             elif max_makis[1] > 0 and self.players[p].n_maki == max_makis[1]:
                     scores[p] += 3
 
+            scores[p] += int(self.players[p].n_dumplings*(self.players[p].n_dumplings+1)/2)
+            """ Equivalent to the following
             if self.players[p].n_dumplings == 1:
                 scores[p] += 1
             if self.players[p].n_dumplings == 2:
@@ -141,6 +143,7 @@ class SushiGo:
                 scores[p] += 10
             if self.players[p].n_dumplings == 5:
                 scores[p] += 15
+            """
 
             #now just loop through the plate to deal with the nigiri
             for card in self.players[p].hand:
