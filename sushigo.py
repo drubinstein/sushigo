@@ -36,17 +36,17 @@ class SushiGo:
         def mov_hand_plate(self, h=0):
             if type(self.hand[h]) is Sashimi:
                 self.n_sashimi += 1
-            if type(self.hand[h]) is Tempura:
+            elif type(self.hand[h]) is Tempura:
                 self.n_tempura += 1
-            if type(self.hand[h]) is Pudding:
+            elif type(self.hand[h]) is Pudding:
                 self.n_pudding += 1
-            if type(self.hand[h]) is Maki:
+            elif type(self.hand[h]) is Maki:
                 self.n_maki += self.hand[h].get_maki()
-            if type(self.hand[h]) is Dumpling:
+            elif type(self.hand[h]) is Dumpling:
                 self.n_dumplings += 1
-            if type(self.hand[h]) is Wasabi:
+            elif type(self.hand[h]) is Wasabi:
                 self.wasabi_unused += 1
-            if issubclass(self.hand[h], Nigiri) and self.wasabi_unused > 0:
+            elif issubclass(self.hand[h], Nigiri) and self.wasabi_unused > 0:
                 self.hand[h].wasabi = True
                 self.wasabi_unused -= 1
 
